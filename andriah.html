@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrews Real Estate Consultancy</title>
+
+<style>
+.search-box{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:20px;
+}
+
+.search-box select, .search-box button{
+padding:10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.search-box button{
+background:#0d3b66;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.search-box button:hover{
+background:#144d86;
+}
+.property-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:20px;
+}
+
+.property-card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+text-align:center;
+padding-bottom:15px;
+}
+
+.property-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.property-card h3{
+margin:10px 0;
+}
+
+.property-card button{
+background:#0d3b66;
+color:white;
+padding:10px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.property-card button:hover{
+background:#144d86;
+}
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f4f4f4;
+}
+
+header{
+background:#0d3b66;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+nav{
+background:#144d86;
+padding:10px;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:15px;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#ffd166;
+}
+
+.hero{
+background:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa') center/cover;
+height:400px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:40px;
+font-weight:bold;
+text-align:center;
+}
+
+section{
+padding:40px;
+max-width:1000px;
+margin:auto;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.contact-form input, .contact-form textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+background:#0d3b66;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#144d86;
+}
+
+footer{
+background:#0d3b66;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+<script>
+
+function filterProperties(){
+
+let type = document.getElementById("typeFilter").value;
+let bedroom = document.getElementById("bedroomFilter").value;
+let price = document.getElementById("priceFilter").value;
+
+let properties = document.querySelectorAll(".property-card");
+
+properties.forEach(function(property){
+
+let pType = property.getAttribute("data-type");
+let pBedroom = property.getAttribute("data-bedrooms");
+let pPrice = property.getAttribute("data-price");
+
+let show = true;
+
+if(type !== "all" && type !== pType) show = false;
+if(bedroom !== "all" && bedroom !== pBedroom) show = false;
+if(price !== "all" && price !== pPrice) show = false;
+
+property.style.display = show ? "block" : "none";
+
+});
+
+}
+
+</script>
+
+<header>
+<h1>Andrew's Real Estate Consultancy</h1>
+<p>Your Trusted Partner in Real Estate</p>
+</header>
+
+<nav>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="hero">
+Find Your Dream Property Today
+</div>
+
+<section id="about">
+<h2>About Us</h2>
+<p>
+Andrews Real Estate Consultancy is dedicated to helping clients buy, sell, and rent residential and commercial properties. 
+Our experienced team provides professional guidance, market insights, and reliable support to ensure that every client makes informed and confident real estate decisions.
+</p>
+</section>
+<section id="search">
+<h2>Search Properties</h2>
+
+<div class="search-box">
+
+<select id="typeFilter">
+<option value="all">Property Type</option>
+<option value="house">House</option>
+<option value="apartment">Apartment</option>
+<option value="office">Office</option>
+</select>
+
+<select id="bedroomFilter">
+<option value="all">Bedrooms</option>
+<option value="2">2 Bedrooms</option>
+<option value="3">3 Bedrooms</option>
+<option value="4">4 Bedrooms</option>
+</select>
+
+<select id="priceFilter">
+<option value="all">Price Range</option>
+<option value="low">Below ₹70 Lakhs</option>
+<option value="mid">₹70L – ₹1 Crore</option>
+<option value="high">Above ₹1 Crore</option>
+</select>
+
+<button onclick="filterProperties()">Search</button>
+
+</div>
+</section>
+
+<section id="services">
+<h2>Our Services</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>Property Buying</h3>
+<p>We assist you in finding the perfect home or investment property that meets your needs and budget.</p>
+</div>
+
+<div class="card">
+<h3>Property Selling</h3>
+<p>Our team helps you sell your property efficiently while achieving the best possible market value.</p>
+</div>
+
+<div class="card">
+<h3>Property Rentals</h3>
+<p>We connect property owners with reliable tenants and help renters find suitable homes.</p>
+</div>
+
+<div class="card">
+<h3>Investment Consulting</h3>
+<p>Receive expert advice on real estate investments to maximize your returns and minimize risks.</p>
+</div>
+
+</div>
+</section><section id="properties">
+<h2>Featured Properties</h2>
+
+<div class="property-container">
+
+<div class="property-card">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Luxury House">
+<h3>Luxury Family House</h3>
+<p>4 Bedrooms | 3 Bathrooms | Garden</p>
+<p><strong>Price:</strong> ₹1.2 Crore</p>
+<button>View Details</button>
+</div>
+
+<div class="property-card">
+<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt="Modern Apartment">
+<h3>Modern Apartment</h3>
+<p>2 Bedrooms | 2 Bathrooms | City View</p>
+<p><strong>Price:</strong> ₹65 Lakhs</p>
+<button>View Details</button>
+</div>
+
+<div class="property-card">
+<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Commercial Office">
+<h3>Commercial Office Space</h3>
+<p>1200 sq.ft | Prime Location</p>
+<p><strong>Price:</strong> ₹90 Lakhs</p>
+<button>View Details</button>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+
+<form class="contact-form">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email Address" required>
+<textarea rows="5" placeholder="Write your message here"></textarea>
+<button type="submit">Send Message</button>
+</form>
+
+</section>
+<section id="location">
+<h2>Our Location</h2>
+
+<iframe 
+src="https://www.google.com/maps?q=Bangalore&output=embed"
+width="100%" 
+height="350" 
+style="border:0;"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</section>
+
+<footer>
+<p>© 2026 Andrews Real Estate Consultancy. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
